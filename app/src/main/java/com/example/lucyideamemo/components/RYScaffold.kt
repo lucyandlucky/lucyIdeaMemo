@@ -39,7 +39,7 @@ fun RYScaffold(
     content: @Composable () -> Unit = {}
 ) {
     Scaffold(
-        contentColor = containerColor,
+        containerColor = containerColor,
         topBar = {
             if (title != null) {
                 TopAppBar(

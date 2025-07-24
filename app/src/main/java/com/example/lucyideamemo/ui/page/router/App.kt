@@ -9,9 +9,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.lucyideamemo.ui.page.main.MainScreen
-import com.moriafly.salt.ui.SaltConfigs
 import com.moriafly.salt.ui.SaltTheme
+import com.moriafly.salt.ui.darkSaltColors
 import com.moriafly.salt.ui.lightSaltColors
+import com.moriafly.salt.ui.saltConfigs
 
 fun NavHostController.debouncedPopBackStack() {
     val currentRoute = this.currentBackStackEntry?.destination?.route
@@ -30,8 +31,8 @@ fun App() {
 
     CompositionLocalProvider {
         SaltTheme(
-            colors = lightSaltColors(),
-            configs = SaltConfigs(false)
+            colors = darkSaltColors(),
+            configs = saltConfigs(false)
         ) {
             NavHostContainer(navController = navController)
         }
