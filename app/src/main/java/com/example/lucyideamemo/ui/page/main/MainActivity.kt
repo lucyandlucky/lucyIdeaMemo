@@ -16,17 +16,25 @@ import com.example.lucyideamemo.ui.page.LocalMemosState
 import com.example.lucyideamemo.ui.page.LocalNoteViewModel
 import com.example.lucyideamemo.ui.page.NoteViewModel
 import com.example.lucyideamemo.ui.page.router.App
+import com.example.lucyideamemo.utils.FirstTimeManager
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
+    @Inject
+    lateinit var firstTimeManager: FirstTimeManager
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         installSplashScreen()
         enableEdgeToEdge()
+
+
+        firstTimeManager.generateIntroduceNote()
 
         lifecycleScope.launch {
             setContent {

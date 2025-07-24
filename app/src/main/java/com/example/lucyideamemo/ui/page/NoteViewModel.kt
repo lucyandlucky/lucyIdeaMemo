@@ -49,34 +49,7 @@ class NoteViewModel @Inject constructor(private val tagNoteRepo: TagNoteRepo) : 
     val state = combine(_state, _notes) { state, notes ->
         val sortedNote = notes.sortedWith(compareByDescending { it.note.isCollected })
         val filteredNotes = if (state.searchQuery.isBlank()) {
-            listOf<NoteShowBean>(
-                NoteShowBean(
-                    note = Note(
-                        noteId = 1,
-                        noteTitle = "标题",
-                        content = "内容",
-                        createTime = System.currentTimeMillis(),
-                        updateTime = System.currentTimeMillis(),
-                        isCollected = true,
-                        isDeleted = false,
-                        attachments = listOf()
-                    ),
-                    tagList = listOf()
-                ),
-                NoteShowBean(
-                    note = Note(
-                        noteId = 2,
-                        noteTitle = "标题",
-                        content = "内容",
-                        createTime = System.currentTimeMillis(),
-                        updateTime = System.currentTimeMillis(),
-                        isCollected = true,
-                        isDeleted = false,
-                        attachments = listOf()
-                    ),
-                    tagList = listOf()
-                )
-            )
+            sortedNote
         } else {
             sortedNote.filter { it.doesMatchSearchQuery(state.searchQuery) }
         }

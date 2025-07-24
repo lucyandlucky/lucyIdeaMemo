@@ -55,6 +55,7 @@ fun AllNotePage(
                     onClick = {
                         showInputDialog = true
                     },
+                    containerColor = SaltTheme.colors.subBackground,
                     modifier = Modifier.padding(end = 16.dp, bottom = 32.dp)
                 ) {
                     Icon(Icons.Rounded.Edit, stringResource(R.string.edit))

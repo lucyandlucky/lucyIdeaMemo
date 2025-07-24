@@ -1,5 +1,6 @@
 package com.example.lucyideamemo.db.repo
 
+import androidx.room.Transaction
 import com.example.lucyideamemo.bean.Note
 import com.example.lucyideamemo.bean.NoteShowBean
 import com.example.lucyideamemo.db.dao.NoteDao
@@ -38,5 +39,10 @@ class TagNoteRepo(
                 tagNoteDao.getAll("update_time", "desc")
             }
         }
+    }
+
+    @Transaction
+    fun insertOrUpdate(note: Note) {
+        noteDao.insert(note)
     }
 }

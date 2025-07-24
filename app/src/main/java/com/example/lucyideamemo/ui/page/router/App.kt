@@ -10,7 +10,6 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.lucyideamemo.ui.page.main.MainScreen
 import com.moriafly.salt.ui.SaltTheme
-import com.moriafly.salt.ui.darkSaltColors
 import com.moriafly.salt.ui.lightSaltColors
 import com.moriafly.salt.ui.saltConfigs
 
@@ -31,7 +30,7 @@ fun App() {
 
     CompositionLocalProvider {
         SaltTheme(
-            colors = darkSaltColors(),
+            colors = lightSaltColors(),
             configs = saltConfigs(false)
         ) {
             NavHostContainer(navController = navController)
