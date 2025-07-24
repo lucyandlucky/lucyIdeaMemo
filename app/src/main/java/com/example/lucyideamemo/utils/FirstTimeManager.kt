@@ -3,6 +3,7 @@ package com.example.lucyideamemo.utils
 import com.example.lucyideamemo.App
 import com.example.lucyideamemo.bean.Note
 import com.example.lucyideamemo.db.repo.TagNoteRepo
+import kotlinx.coroutines.flow.first
 import javax.inject.Inject
 
 class FirstTimeManager @Inject constructor() {
@@ -12,7 +13,9 @@ class FirstTimeManager @Inject constructor() {
 
     fun generateIntroduceNote() {
         lunchIo {
-            if (tagNoteRepo.queryAllNotes().isNotEmpty()) {
+            if (!SettingsPreferences.fitstLaunch.first() ||
+                tagNoteRepo.queryAllNotes().isNotEmpty()
+            ) {
                 return@lunchIo
             }
             if (App.instance.isSystemLanguageEnglish()) {
